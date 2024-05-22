@@ -1,36 +1,52 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+初回のみ(もしくは`package.json`ファイルに変更があった時)以下のコマンドを実行してください。
+```bash
+npm install
+```
 
-First, run the development server:
+開発時は以下のコマンドを実行してください。
+サーバーが起動し、他のサーバーが動いていない限りは[http://localhost:3000](http://localhost:3000) でリアルタイムに変更を確認できます。(ログでURLが表示されます)
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+もし止めたいなと思ったら、`Ctrl + C`を押してください。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ファイルについて
+- このプロジェクトではNext.jsを使用しています。
+- `src/app`のフォルダ以下に、アプリケーションのコードが格納されています。
+- フォルダ名がURLに対応していて、その中に`page.js`を作成することで、そのURLにアクセスした際に表示されるコンポーネントを指定できます。
+- `src/components`のフォルダ以下に、アプリケーションで使用するコンポーネントが格納されています。
+- 重要なのは`src/app`のフォルダ以下にあるファイルです。それ以外のファイルは、特にルールはありません。
+- `layout.js`は、全てのページで共通して表示されるコンポーネントを指定することができます。
+- `globals.css`を`layout.js`で読み込むことで、全てのページで共通のスタイルを適用することができます。
+- ただし、`globals.css`は、全てのページで共通のスタイルを適用するために使用するファイルです。ページごとに異なるスタイルを適用する場合は、`page.js`または、各コンポーネントのファイルの内で`import`してください。
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Gitの運用
+### はじめに
+- このリポジトリは、GitHubを使ってバージョン管理を行います。
+- 作業を始める前に、mainブランチを最新の状態にしてください
+  - Forkを開いて
+  - `fetch`をクリックしてください
+  - もし、GitHubのアイコン(origin/~~)と何もない文字だけの行が分かれている場合、
+    - GitHubのアイコンが上にある場合は、`Pull`をクリックしてください
+    - 何もない文字だけの行が上にある場合は、`Push`をクリックしてください
+  - 作業は、mainブランチから新しいブランチを作成して行ってください
+  - mainブランチにチェックが付いている状態でコードの変更を行わないようにしてください
+### ブランチ
+- main: 全員のコードが統合されるブランチ
+- \[名前\]: 各自の作業ブランチ
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+各々が作業する際は、mainブランチから、自分の名前のブランチを作成してください。
+作業が終わったら、Gitが触れる人に頼んで、mainブランチにマージしてもらってください。
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### コミットメッセージ
+- コミットメッセージは日本語で書いてください。
+- コミットメッセージの冒頭には、以下のように、変更内容を簡潔に記述してください。
+  - \[追加\] 新機能の追加
+  - \[修正\] バグの修正
+  - \[削除\] 不要なファイルの削除
+  - \[その他\] その他の変更
+- コミットメッセージの本文には、変更の理由や行った作業の要約などを記入してください。
