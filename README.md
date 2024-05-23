@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## はじめに
 初回のみ(もしくは`package.json`ファイルに変更があった時)以下のコマンドを実行してください。
 ```bash
 npm install
