@@ -22,8 +22,7 @@ export default function TodoComponent() {
             text: newTodo,
         };
 
-        setTodos([...todos, newTodoItem
-        ]);
+        setTodos([...todos, newTodoItem]);
         setNewTodo("");
     };
 
@@ -53,7 +52,7 @@ export default function TodoComponent() {
             <input className={styles.input} value={newTodo} onChange={todoChange}/>
             <button className={styles.add} onClick={addTodos}>add</button>
             <ul className={styles.list}>
-                {todos.map((todo,index) => todo.id !== "null" ?(
+                {typeof todos.map === 'function' && todos.map((todo,index) => todo.id !== "null" ?(
                     <div className={styles.todo} key={todo.id}>
                         <span className={styles.index}>{index+1}.</span>
                         <span className={styles.text}>{todo.text}</span>
