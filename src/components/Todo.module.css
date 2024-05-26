@@ -1,0 +1,80 @@
+/* Todo.module.css */
+
+.box {
+    margin: 0 150px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input {
+    width: calc(100% - 60px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add {
+    width: 50px;
+    padding: 10px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add:hover {
+    background-color: #218838;
+}
+
+.list {
+    margin: 20px;
+    list-style-type: none;
+    overflow-wrap: anywhere;
+}
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.index{
+    margin: 0 0 0 20px;
+    width: 50px;
+}
+
+.text{
+    text-align:center;
+    width: 600px;
+}
+
+.todo span {
+    font-size: 16px;
+}
+
+.remove {
+    width: 70px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: white;
+    cursor: pointer;
+}
+
+.remove:hover {
+    background-color: #c82333;
+}
