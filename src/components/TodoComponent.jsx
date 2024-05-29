@@ -101,7 +101,7 @@ export default function TodoComponent() {
     }
 
     const handleclear = () => {
-        const newTodos = todos.filter((todos) => !todos.isDone);
+        const newTodos = todos.filter((todos) => todos.progress !== "done");
         setTodos(newTodos);
     };
 
@@ -139,7 +139,6 @@ export default function TodoComponent() {
                 </select>
             </div>
             {/* 表示リスト関係 */}
-            <button className={styles.add} onClick={addTodos}>add</button>
             <button onClick={handleclear}>完了したタスクの消去</button>
             <div>残りのタスク:{todos.filter((todos) => !todos.isDone).length} </div>
             <ul className={styles.list}>
@@ -157,12 +156,15 @@ export default function TodoComponent() {
                         <label >
                             <input
                                 type="checkbox"
-                                checked={todos[index].isDone}
+                                checked={todo.progress === "done" ? true : false}
                                 onChange={(e) => {
                                     console.log(todo)
                                     const newTodos = [...todos];
-                                    const id = todo.id;
-                                    newTodos[index].isDone = !newTodos[index].isDone
+                                    if (e.target.checked) {
+                                        newTodos[index].progress = "done";
+                                    } else {
+                                        newTodos[index].progress = "notDone";
+                                    }
                                     setTodos(newTodos);
                                 }}
                             />
