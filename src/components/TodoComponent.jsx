@@ -136,7 +136,7 @@ export default function TodoComponent() {
             </div>
             {/* 表示リスト関係 */}
             <ul className={styles.list}>
-                {todos.map((todo,index) => todo.id !== "null" ?(
+                {typeof filteredTodos().map === 'function' && filteredTodos().map((todo, index) => todo.id !== 'null' ?(
                     <div className={styles.todo} key={todo.id}>
                         <span className={styles.index}>{index +1}</span>
                         <span className={styles.text}>{todo.text}</span>
