@@ -43,8 +43,7 @@ export default function TodoComponent() {
         };
 
         // これまでに加えられたタスクとこれから加えるタスクをtodoに上書き保存する
-        setTodos([...todos, newTodoItem]);
-        // 次に入力するときに入力フォームが初期状態になるように上書き
+        setTodos([...todos, newTodoItem]);// 次に入力するときに入力フォームが初期状態になるように上書き
         setNewTodo("");
         setNewPriority("normal");
         setNewProgress('notDone');
@@ -137,7 +136,7 @@ export default function TodoComponent() {
             </div>
             {/* 表示リスト関係 */}
             <ul className={styles.list}>
-                {typeof filteredTodos().map === 'function' && filteredTodos().map((todo, index) => todo.id !== 'null' ?(
+                {todos.map((todo,index) => todo.id !== "null" ?(
                     <div className={styles.todo} key={todo.id}>
                         <span className={styles.index}>{index +1}</span>
                         <span className={styles.text}>{todo.text}</span>

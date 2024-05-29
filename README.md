@@ -42,7 +42,39 @@ npm run dev
 各々が作業する際は、mainブランチから、自分の名前のブランチを作成してください。
 作業が終わったら、Gitが触れる人に頼んで、mainブランチにマージしてもらってください。
 
-### コミットメッセージ
+### コミットの仕方
+ファイルになにか変更をした場合、その変更を記録に残して他の人と共有するために、コミットをします。
+作業する際には`Fetch`を毎回してください
+
+自分の名前のブランチにチェックが入っていることを確認しつつ、`Local Changes`タブを開いて
+<img width="1710" alt="Unstaged changes" src="https://github.com/nenrinyear/shareable-todolist/assets/165178553/5291a114-eb38-48f7-8c78-d543c284b862">
+コミットに含めたいファイルを選択して`Stage`ボタンで含めて
+<img width="1710" alt="staged changes" src="https://github.com/nenrinyear/shareable-todolist/assets/165178553/9985c6e5-42b5-4ea4-9662-04ba711be653">
+下記のルール通りにコミットメッセージを書いてコミット
+<img width="1710" alt="commit message" src="https://github.com/nenrinyear/shareable-todolist/assets/165178553/a18c48e3-d22d-4964-a2e5-03423daa3571">
+
+### プッシュの仕方
+
+コミットができたら、ローカルの変更のコミットを他の人と共有するために、GitHubにプッシュする必要があります
+<img width="1710" alt="committed unpushed" src="https://github.com/nenrinyear/shareable-todolist/assets/165178553/7c676c00-2d07-4df8-865a-3d4eec326e59">
+GitHubのアイコンとブランチの名前が同じ列に来たらプッシュ成功です
+<img width="1710" alt="pushed" src="https://github.com/nenrinyear/shareable-todolist/assets/165178553/289ee51b-d882-4782-bf4f-3e551e39f27c">
+
+### プルの仕方
+
+他の人が変更をプッシュすると、その他の人はGitHubから変更をダウンロードして、GitHubとローカルの変更を同期しなければいけません。
+
+まずは`Fetch`をしてから、
+画像のような状態になっていたら、まずはローカルとリモート(origin/~~となっているところ)が分かれているブランチのローカル側のブランチを右クリックして`Checkout`して
+<img width="1710" alt="unpulled" src="https://github.com/nenrinyear/shareable-todolist/assets/165178553/d6985f40-d161-428f-9c0e-c45cec5d520a">
+<img width="1710" alt="local main checkouted" src="https://github.com/nenrinyear/shareable-todolist/assets/165178553/ec61b7ce-46ac-48e6-af0c-355bab096c5c">
+`Pull`をクリック
+<img width="1710" alt="pulling" src="https://github.com/nenrinyear/shareable-todolist/assets/165178553/6ede1da0-b5c3-4905-b485-f5f219ba1542">
+これでGitHubの変更をローカルに同期することができました
+<img width="1710" alt="pulled complete" src="https://github.com/nenrinyear/shareable-todolist/assets/165178553/ea894a9b-2cc0-4ab4-b36f-10007518d566">
+
+
+#### コミットメッセージ
 - コミットメッセージは日本語で書いてください。
 - コミットメッセージの冒頭には、以下のように、変更内容を簡潔に記述してください。
   - \[追加\] 新機能の追加
