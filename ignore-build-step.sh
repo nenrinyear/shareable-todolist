@@ -8,3 +8,4 @@ if [[ "$VERCEL_GIT_COMMIT_REF" == "main" ]] ; then
 else
     echo "🛑 - Build cancelled"
     exit 0;
+fi
