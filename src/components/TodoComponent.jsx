@@ -100,6 +100,10 @@ export default function TodoComponent() {
         }
     }
 
+    const handleclear = () => {
+        const newTodos = todos.filter((todos) => !todos.isDone);
+        setTodos(newTodos);
+    };
 
     return (
         <div className={styles.box}>
@@ -135,22 +139,37 @@ export default function TodoComponent() {
                 </select>
             </div>
             {/* 表示リスト関係 */}
+            <button className={styles.add} onClick={addTodos}>add</button>
+            <button onClick={handleclear}>完了したタスクの消去</button>
+            <div>残りのタスク:{todos.filter((todos) => !todos.isDone).length} </div>
             <ul className={styles.list}>
-                {typeof filteredTodos().map === 'function' && filteredTodos().map((todo, index) => todo.id !== 'null' ?(
+            {typeof filteredTodos().map === 'function' && filteredTodos().map((todo, index) => todo.id !== 'null' ?(
                     <div className={styles.todo} key={todo.id}>
                         <span className={styles.index}>{index +1}</span>
                         <span className={styles.text}>{todo.text}</span>
                         <span className={styles.priority}>{todo.priority}</span>
                         {/* 削除ボタン */}
                         <button className={styles.remove} onClick={() => {
-                            const newTodo = [ ...todos];
-                            newTodo.splice(index, 1);
-                            setTodos(newTodo)
+                            const newTodos = [...todos];
+                            newTodos.splice(index, 1);
+                            setTodos(newTodos)
                         }}>remove</button>
+                        <label >
+                            <input
+                                type="checkbox"
+                                checked={todos[index].isDone}
+                                onChange={(e) => {
+                                    console.log(todo)
+                                    const newTodos = [...todos];
+                                    const id = todo.id;
+                                    newTodos[index].isDone = !newTodos[index].isDone
+                                    setTodos(newTodos);
+                                }}
+                            />
+                        </label>
                     </div>
                 ):null)}
             </ul>
-            
         </div>
     );
 }
