@@ -1,6 +1,11 @@
 /* Overall container styling */
 .box {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     margin: 20px auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -11,6 +16,7 @@
 
 /* Input box styling */
 .inputbox {
+    width: 100%;
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
@@ -31,7 +37,7 @@
     background-color: #eef7ff;
 }
 
-.select {
+.selector {
     padding: 10px;
     border: 2px solid #ddd;
     border-radius: 6px;
@@ -40,35 +46,66 @@
     transition: border-color 0.3s, background-color 0.3s;
 }
 
-.select:focus {
+.selector:focus {
     border-color: #007bff;
     background-color: #eef7ff;
 }
 
-.add {
+.button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
+    background-color: #f0f2f5;
+    color: black;
+    border: 1px solid #ddd;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
     transition: background-color 0.3s;
 }
+.button:hover {
+    background-color: #bfbfbf;
+}
+.button:disabled {
+    background-color: #ddd;
+    color: #aaa;
+    cursor: not-allowed;
+}
 
-.add:hover {
-    background-color: #0056b3;
+.button.add {
+    color: white;
+    background-color: #3592f4;
+}
+.button.add:hover {
+    background-color: #1472d7;
+}
+.button.add:disabled {
+    background-color: #ddd;
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+.button.remove {
+    color: white;
+    background-color: #fe7381;
+}
+.button.remove:hover {
+    background-color: #d63a4a;
+}
+.button.remove:disabled {
+    background-color: #f0f2f5;
+    color: #aaa;
+    cursor: not-allowed;
 }
 
 /* Filter section styling */
 .filters {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 20px;
 }
 
 .priorityFilter, .progressFilter {
-    width: 48%;
+    margin: 0 10px;
 }
 
 .priorityFilter p, .progressFilter p {
@@ -92,8 +129,17 @@
     background-color: #eef7ff;
 }
 
+.nokori {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* Todo list styling */
 .list {
+    width: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -133,14 +179,31 @@
     padding-top: 4px;
     text-align: center;
     border-radius:4px;
-    background-color: #007bff;
+    color: #007bff;
+    background-color: #eef7ff;
     font-size: 14px;
     color:white;
+}
+.priority.emergency {
+    color: #dc3545;
+    background-color: #f8d7da;
+}
+.priority.important {
+    color: #ffbf00;
+    background-color: #fff3cb;
+}
+.priority.normal {
+    color: #28a745;
+    background-color: #d4edda;
+}
+.priority.trifle {
+    color: #6c757d;
+    background-color: #e2e3e5;
 }
 
 .remove {
     padding: 5px 10px;
-    background-color: #dc3545;
+    background-color: #dcdcdc;
     color: white;
     border: none;
     border-radius: 6px;
@@ -150,7 +213,7 @@
 }
 
 .remove:hover {
-    background-color: #c82333;
+    background-color: #bfbfbf;
 }
 
 /* Media query for responsive design */
