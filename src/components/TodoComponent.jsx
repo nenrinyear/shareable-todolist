@@ -210,11 +210,6 @@ export default function TodoComponent() {
                     className={styles.input}
                     value={newTodo}
                     onChange={todoChange}
-                    onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                            addTodos();
-                        }
-                    }}
                 />
                 <select id="inputPriority"className={styles.selector} value={newPriority} onChange={priorityChange}>
                     <option value="emergency">{priorityToJapanese("emergency")}</option>
