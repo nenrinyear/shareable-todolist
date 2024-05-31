@@ -7,7 +7,7 @@ import { getDatabase, ref, get, child, set, onValue } from "firebase/database";
 export const priorityToJapanese = (priority) => {
     switch (priority) {
         case "all":
-            return "全て";
+            return "すべて";
         case "emergency":
             return "緊急";
         case "important":
@@ -230,7 +230,7 @@ export default function TodoComponent() {
             <div className={styles.filters}>
                 {/* 優先度フィルター関係 */}
                 <div className={styles.priorityFilter} >
-                    <p>priority filter</p>
+                    <p>優先度フィルター</p>
                     <select id="prioritySelector" className={styles.selector} value={priorityFilter} onChange={priorityFilterChange}>
                         <option value="all">{priorityToJapanese("all")}</option>
                         <option value='emergency'>{priorityToJapanese("emergency")}</option>
@@ -241,7 +241,7 @@ export default function TodoComponent() {
                 </div>
                 {/* 進捗フィルター関係 */}
                 <div id="progressFilter" className={styles.progressFilter} value={progressFilter} onChange={progressChange}>
-                    <p>progress filter</p>
+                    <p>進捗状況フィルター</p>
                     <select id="progressSelector" className={styles.selector}>
                         <option value="all">すべて</option>
                         <option value="done">完了</option>
