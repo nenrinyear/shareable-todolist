@@ -85,7 +85,7 @@
 
 .button.remove {
     color: white;
-    background-color: #fe7381;
+    background-color: #ff4155;
 }
 .button.remove:hover {
     background-color: #d63a4a;
@@ -170,7 +170,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 50px;
 }
 .todo .content .id > * {
     margin-right: 10px;
@@ -251,6 +250,9 @@
 }
 
 .remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 5px 10px;
     background-color: #dcdcdc;
     color: red;
@@ -263,11 +265,19 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+}
+.remove.circle {
+    padding: 5px;
+    border-radius: 9999px;
+}
+
+.content > .remove {
+    display: none;
 }
 
 .remove:hover {
-    background-color: #bfbfbf;
+    background-color: #ff2727;
 }
 
 /* Media query for responsive design */
@@ -300,5 +310,13 @@
 
     .index {
         text-align: left;
+    }
+
+    .content > .remove {
+        display: flex;
+    }
+
+    .actions > .remove {
+        display: none;
     }
 }

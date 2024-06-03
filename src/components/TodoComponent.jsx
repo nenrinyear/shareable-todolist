@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import styles from "./Todo.module.css";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, get, child, set, onValue } from "firebase/database";
+import RemoveButton from "./RemoveButton";
 
 export const priorityToJapanese = (priority) => {
     switch (priority) {
@@ -201,6 +202,13 @@ export default function TodoComponent() {
         setTodos(newTodos);
     };
 
+    const handleSingleClear = (todo_id) => {
+        const newTodos = [...todos];
+        const _index = newTodos.findIndex((td) => td.id === todo_id);
+        newTodos.splice(_index, 1);
+        setTodos(newTodos)
+    }
+
     return (
         <div className={styles.box}>
             {/* 入力関係 */}
@@ -261,7 +269,7 @@ export default function TodoComponent() {
                 </button>
             </div>
 
-            <ul className={styles.list}>
+            <div className={styles.list}>
                 {typeof filteredTodos().map === 'function' && filteredTodos().map((todo, index) => todo.id !== 'null' ?(
                     <div className={styles.todo} key={todo.id}>
                         <div className={styles.content}>
@@ -284,39 +292,35 @@ export default function TodoComponent() {
                                         }}
                                     />
                                 </label>
+                                <span
+                                    className={`${styles.priority} ${
+                                        todo.priority === 'emergency' ? styles.emergency :
+                                        todo.priority === 'important' ? styles.important :
+                                        todo.priority === 'normal' ? styles.normal :
+                                        styles.trifle
+                                    }`}
+                                >
+                                    {priorityToJapanese(todo.priority)}
+                                </span>
                             </div>
-                            <span
-                                className={`${styles.priority} ${
-                                    todo.priority === 'emergency' ? styles.emergency :
-                                    todo.priority === 'important' ? styles.important :
-                                    todo.priority === 'normal' ? styles.normal :
-                                    styles.trifle
-                                }`}
-                            >
-                                {priorityToJapanese(todo.priority)}
-                            </span>
+                            <RemoveButton
+                                className={`${styles.remove} ${styles.circle}`}
+                                onClick={() => handleSingleClear(todo.id)}
+                            />
                         </div>
 
                         <div className={styles.textbox}>
                             <span className={styles.text}>{todo.text}</span>
                         </div>
                         <div className={styles.actions}>
-                            {/* 削除ボタン */}
-                            <button
-                                className={styles.remove}
-                                onClick={() => {
-                                    const newTodos = [...todos];
-                                    const _index = newTodos.findIndex((td) => td.id === todo.id);
-                                    newTodos.splice(_index, 1);
-                                    setTodos(newTodos)
-                                }}
-                            >
-                                削除
-                            </button>
+                            <RemoveButton
+                                className={`${styles.remove} ${styles.circle}`}
+                                onClick={() => handleSingleClear(todo.id)}
+                            />
                         </div>
                     </div>
                 ) : null)}
-            </ul>
+            </div>
         </div>
     );
 }
