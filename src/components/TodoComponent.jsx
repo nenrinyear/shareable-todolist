@@ -206,12 +206,11 @@ export default function TodoComponent() {
             {/* 入力関係 */}
             <div className={styles.inputbox}>
                 <input
-                    id="inputbox"
                     className={styles.input}
                     value={newTodo}
                     onChange={todoChange}
                 />
-                <select id="inputPriority"className={styles.selector} value={newPriority} onChange={priorityChange}>
+                <select className={styles.selector} value={newPriority} onChange={priorityChange}>
                     <option value="emergency">{priorityToJapanese("emergency")}</option>
                     <option value="important">{priorityToJapanese("important")}</option>
                     <option value="normal">{priorityToJapanese("normal")}</option>
@@ -231,7 +230,7 @@ export default function TodoComponent() {
                 {/* 優先度フィルター関係 */}
                 <div className={styles.priorityFilter} >
                     <p>優先度フィルター</p>
-                    <select id="prioritySelector" className={styles.selector} value={priorityFilter} onChange={priorityFilterChange}>
+                    <select className={styles.selector} value={priorityFilter} onChange={priorityFilterChange}>
                         <option value="all">{priorityToJapanese("all")}</option>
                         <option value='emergency'>{priorityToJapanese("emergency")}</option>
                         <option value="important">{priorityToJapanese("important")}</option>
@@ -240,9 +239,9 @@ export default function TodoComponent() {
                     </select>
                 </div>
                 {/* 進捗フィルター関係 */}
-                <div id="progressFilter" className={styles.progressFilter} value={progressFilter} onChange={progressChange}>
+                <div className={styles.progressFilter} value={progressFilter} onChange={progressChange}>
                     <p>進捗状況フィルター</p>
-                    <select id="progressSelector" className={styles.selector}>
+                    <select className={styles.selector}>
                         <option value="all">すべて</option>
                         <option value="done">完了</option>
                         <option value="notDone">未完了</option>
@@ -252,7 +251,7 @@ export default function TodoComponent() {
 
             <div className={styles.nokori}>
                 {/* 表示リスト関係 */}
-                <div>残りのタスク:{todos && todos.filter((todos) => !todos.isDone).length} </div>
+                <div>残りのタスク: {todos && todos.filter((todos) => !todos.isDone).length} </div>
                 <button
                     className={`${styles.button} ${styles.remove}`}
                     onClick={handleclear}
@@ -265,46 +264,56 @@ export default function TodoComponent() {
             <ul className={styles.list}>
                 {typeof filteredTodos().map === 'function' && filteredTodos().map((todo, index) => todo.id !== 'null' ?(
                     <div className={styles.todo} key={todo.id}>
-                        <span className={styles.index}>{index +1}</span>
-                        <label>
-                            <input
-                                type="checkbox"
-                                checked={todo.isDone}
-                                onChange={(e) => {
+                        <div className={styles.content}>
+                            <div className={styles.id}>
+                                <span className={styles.index}>{index +1}</span>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        className={styles.checkbox}
+                                        checked={todo.isDone}
+                                        onChange={(e) => {
+                                            const newTodos = [...todos];
+                                            const _index = newTodos.findIndex((td) => td.id === todo.id);
+                                            if (e.target.checked) {
+                                                newTodos[_index].isDone = true;
+                                            } else {
+                                                newTodos[_index].isDone = false;
+                                            }
+                                            setTodos(newTodos);
+                                        }}
+                                    />
+                                </label>
+                            </div>
+                            <span
+                                className={`${styles.priority} ${
+                                    todo.priority === 'emergency' ? styles.emergency :
+                                    todo.priority === 'important' ? styles.important :
+                                    todo.priority === 'normal' ? styles.normal :
+                                    styles.trifle
+                                }`}
+                            >
+                                {priorityToJapanese(todo.priority)}
+                            </span>
+                        </div>
+
+                        <div className={styles.textbox}>
+                            <span className={styles.text}>{todo.text}</span>
+                        </div>
+                        <div className={styles.actions}>
+                            {/* 削除ボタン */}
+                            <button
+                                className={styles.remove}
+                                onClick={() => {
                                     const newTodos = [...todos];
                                     const _index = newTodos.findIndex((td) => td.id === todo.id);
-                                    if (e.target.checked) {
-                                        newTodos[_index].isDone = true;
-                                    } else {
-                                        newTodos[_index].isDone = false;
-                                    }
-                                    setTodos(newTodos);
+                                    newTodos.splice(_index, 1);
+                                    setTodos(newTodos)
                                 }}
-                            />
-                        </label>
-                        <span className={styles.text}>{todo.text}</span>
-                        <span
-                            className={`${styles.priority} ${
-                                todo.priority === 'emergency' ? styles.emergency :
-                                todo.priority === 'important' ? styles.important :
-                                todo.priority === 'normal' ? styles.normal :
-                                styles.trifle
-                            }`}
-                        >
-                            {priorityToJapanese(todo.priority)}
-                        </span>
-                        {/* 削除ボタン */}
-                        <button
-                            className={styles.remove}
-                            onClick={() => {
-                                const newTodos = [...todos];
-                                const _index = newTodos.findIndex((td) => td.id === todo.id);
-                                newTodos.splice(_index, 1);
-                                setTodos(newTodos)
-                            }}
-                        >
-                            ❌
-                        </button>
+                            >
+                                削除
+                            </button>
+                        </div>
                     </div>
                 ) : null)}
             </ul>
