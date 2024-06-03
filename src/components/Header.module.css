@@ -28,7 +28,7 @@
     align-items: center;
 }
 .Links a {
-    margin: 0 10px;
+    padding: 0 10px;
     font-size: 1.2rem;
     color: black;
     text-decoration: none;
@@ -46,7 +46,6 @@
 }
 .Accounts a, .Accounts button {
     padding: 5px 10px;
-    margin: 0 10px;
     font-size: 1rem;
     color: black;
     text-decoration: none;
@@ -62,4 +61,34 @@
 .email {
     font-size: 0.8rem;
     color: #666666;
+}
+
+.Accounts button {
+    font-size: 1rem;
+}
+@media screen and (max-width: 768px) {
+    .Links {
+        width: 20%;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .Accounts {
+        width: 80%;
+        justify-content: flex-end;
+    }
+    .email {
+        max-width: 70%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .Accounts button {
+        max-width: 30%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 0.75rem;
+    }
 }
