@@ -263,7 +263,7 @@ export default function TodoComponent() {
                 <button
                     className={`${styles.button} ${styles.remove}`}
                     onClick={handleclear}
-                    disabled={todos && todos.filter((todos) => todos.isDone).length === 0}
+                    disabled={!todos || todos.filter((todos) => todos.isDone).length < 1}
                 >
                     完了したタスクの消去
                 </button>
