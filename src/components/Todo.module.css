@@ -172,6 +172,9 @@
     justify-content: space-between;
 }
 .todo .content .id > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 10px;
 }
 
